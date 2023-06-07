@@ -3,14 +3,16 @@
 
 hour=0
 minute=1
+count=0
 
 while [ $hour -le 12 ]; do
   while [ $minute -le 59 ]; do
     printf "%02d:%02d\n" $hour $minute
     minute=$((minute + 1))
+    count=$((count + 1))
 
     # Display only the first 70 lines
-    if [ $((hour * 60 + minute)) -eq 70 ]; then
+    if [ $count -eq 70 ]; then
       exit
     fi
   done
