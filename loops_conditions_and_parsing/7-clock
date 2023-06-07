@@ -8,7 +8,8 @@ while [ $hours -le 12 ]
 do
     while [ $minutes -le 59 ]
     do
-        printf "%02d:%02d\n" $hours $minutes
+        echo "Hour: $hours"
+        echo $minutes
         minutes=$((minutes+1))
 
         # Display only the first 70 lines
