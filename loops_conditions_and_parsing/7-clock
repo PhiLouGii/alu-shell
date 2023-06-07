@@ -2,21 +2,23 @@
 # This script displays the time for 12 hours and 59 minutes
 
 hour=0
-minute=1
-count=0
+minute=0
 
 while [ $hour -le 12 ]; do
+  printf "Hour: %d\n" $hour
+
+  if [ $hour -eq 0 ]; then
+    minute=1
+  else
+    minute=0
+  fi
+
   while [ $minute -le 59 ]; do
-    printf "%02d:%02d\n" $hour $minute
+    printf "%d\n" $minute
     minute=$((minute + 1))
-    count=$((count + 1))
 
     # Display only the first 70 lines
-    if [ $count -eq 70 ]; then
+    if [ $hour -eq 5 ] && [ $minute -eq 59 ]; then
       exit
     fi
   done
-
-  minute=0
-  hour=$((hour + 1))
-done
