@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script parses the Apache log access file and displays visitor IP along with HTTP status code
+
+grep -oE "^[^ ]+" apache-access.log | paste -d' ' - - | cut -d' ' -f1,5
+
