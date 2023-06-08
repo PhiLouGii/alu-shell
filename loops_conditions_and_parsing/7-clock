@@ -1,22 +1,10 @@
 #!/usr/bin/env bash
 # This script displays the time for 12 hours and 59 minutes
 
-hours=0
-minutes=1
-
-while [ $hours -lt 13 ]; do
-  while [ $minutes -lt 60 ]; do
-    if [ $hours -eq 0 ]; then
-      echo "12:$minutes AM"
-    elif [ $hours -lt 10 ]; then
-      echo "0$hours:$minutes AM"
-    elif [ $hours -eq 12 ]; then
-      echo "12:$minutes PM"
-    else
-      echo "$hours:$minutes PM"
-    fi
-    minutes=$((minutes+1))
+for ((hour=1; hour<=12; hour++))
+do
+  for ((minute=1; minute<=59; minute++))
+  do
+    printf "%02d:%02d\n" $hour $minute
   done
-  hours=$((hours+1))
-  minutes=1
 done
