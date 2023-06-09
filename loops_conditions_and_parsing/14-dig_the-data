@@ -4,5 +4,9 @@
 if [ -s access.log ]; then
   awk '{ count[$1 " " $9]++ } END { for (key in count) print count[key], key }' access.log | sort -nr
 else
-  echo "0 chars for $(basename access.log)"
+  if [ -f access.log ]; then
+    echo "0 chars for $(basename access.log)"
+  else
+    echo "wrong format log file"
+  fi
 fi
