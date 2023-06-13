@@ -2,4 +2,4 @@
 # This script displays lines containing the word "bash" and extracts the PID of the Bash process.
 
 # shellcheck disable=SC2009
-ps aux | grep -i bash | grep -v grep | awk '{print $2}'
+ps aux | grep -i bash | grep -v grep | awk '{print "PID:", $2, "Command:", $11}'
