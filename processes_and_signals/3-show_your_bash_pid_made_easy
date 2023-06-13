@@ -3,7 +3,7 @@
 
 # Use pgrep command to find process IDs based on process name
 # Loop through each process ID and retrieve the process name using /proc filesystem
-for pid in $(pgrep -f bash); do
-    process_name=$(cat "/proc/$pid/cmdline" 2>/dev/null | tr '\0' ' ')
+pgrep -f bash | while read -r pid; do
+    process_name=$(tr -d '\0' < "/proc/$pid/cmdline" 2>/dev/null)
     echo "PID: $pid, Process Name: $process_name"
 done
